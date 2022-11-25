@@ -14,7 +14,7 @@ import {
 import { BASE_CONTEXTE } from "../../reducer/Contexte";
 import { VisibleContexte } from "../../reducerVue/Contexte";
 import socketIO from 'socket.io-client';
-const socket = socketIO('http://localhost:5000');
+const socket = socketIO(process.env.CLIENT);
 
 
 const Accueil = () => {

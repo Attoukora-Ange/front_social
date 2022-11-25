@@ -202,29 +202,6 @@ const Gauche = () => {
             Fil d'actualité
           </div>
         </div>
-        {/* Conversation */}
-
-        {/* <div className="liste_amis">
-          <div className="liste_amis_image">
-            <RiMessage3Line />
-          </div>
-          <div
-            className="liste_amis_texte click_flou"
-            onClick={handleCoversation}
-          >
-            Conversation
-          </div>
-        </div>
-        <div className="liste_amis">
-          <div className="liste_amis_image">
-            <RiMessage3Line />
-          </div>
-          <div className="liste_amis_texte">
-            <Link to="/tchat">Tchat</Link>
-          </div>
-        </div> */}
-         {/* Conversation */}
-         
         <div className="liste_amis">
           <div className="liste_amis_image">
             <FaUserFriends />
