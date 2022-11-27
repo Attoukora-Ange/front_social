@@ -35,7 +35,7 @@ const Connexion = () => {
           // localStorage.setItem('token', JSON.stringify(response.data.token))
           let date = new Date(Date.now() + 86400000); //86400000ms = 1 jour
           date =  date.toUTCString();
-          document.cookie = "access_token="+ response.data.token + "path=/; expires=" + date  
+          document.cookie = "access_token="+ response.data.token + ";path=/; expires=" + date  
           console.log('token ' + response.data.token)
           dispacth({type: AFFICHER_UTILISATEUR, payload : response.data.NOUVEAU_CONNECTE})
           window.location = '/';
