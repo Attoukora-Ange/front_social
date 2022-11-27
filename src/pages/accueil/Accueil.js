@@ -21,13 +21,14 @@ const Accueil = () => {
   const { stateVisible } = useContext(VisibleContexte);
   const { state, dispacth } = useContext(BASE_CONTEXTE);
   useEffect(() => {
-   
     const URL_JWT = `${process.env.REACT_APP_URL}/api/utilisateur/profil`;
+    const token = document.cookie && document.cookie.split('=')[1];
     axios
       .get(URL_JWT, {
         withCredentials: true,
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
         },
       })
       .then((response) => {
@@ -46,11 +47,13 @@ const Accueil = () => {
   }, []);
   useEffect(() => {
     const URL_JWT = `${process.env.REACT_APP_URL}/api/liste/utilisateur`;
+    const token = document.cookie && document.cookie.split('=')[1];
     axios
       .get(URL_JWT, {
         withCredentials: true,
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
         },
       })
       .then((response) => {
@@ -69,11 +72,13 @@ const Accueil = () => {
   }, []);
   useEffect(() => {
     const URL_POST = `${process.env.REACT_APP_URL}/api/poster`;
+    const token = document.cookie && document.cookie.split('=')[1];
     axios
       .get(URL_POST, {
         withCredentials: true,
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
         },
       })
       .then((response) => {

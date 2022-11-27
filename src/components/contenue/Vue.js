@@ -72,7 +72,7 @@ const Vue = () => {
     }
     
     const URL_COM = `${process.env.REACT_APP_URL}/api/poster`;
-
+    const token = document.cookie && document.cookie.split('=')[1];
     if(FD.get("post")?.size > 3000000) return toast(`La taille ${FD.get("post").size} oct du fichier doit être inferieur à 3000000 oct`, option)
    axios
       .post(
@@ -84,7 +84,8 @@ const Vue = () => {
         {
           withCredentials: true,
           headers: {
-            "Content-Type": "multipart/form-data",
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
           },
         }
       )

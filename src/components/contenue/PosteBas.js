@@ -25,6 +25,7 @@ const PosteBas = ({ vuePostBas }) => {
 
   const handleUnlike = (id) => {
     const URL_UNL = `${process.env.REACT_APP_URL}/api/poster/unlike/${id}`;
+    const token = document.cookie && document.cookie.split('=')[1];
     axios
       .put(
         URL_UNL,
@@ -33,6 +34,7 @@ const PosteBas = ({ vuePostBas }) => {
           withCredentials: true,
           headers: {
             "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
           },
         }
       )
@@ -52,6 +54,7 @@ const PosteBas = ({ vuePostBas }) => {
   };
   const handleLike = (id) => {
     const URL_LIK = `${process.env.REACT_APP_URL}/api/poster/like/${id}`;
+    const token = document.cookie && document.cookie.split('=')[1];
     axios
       .put(
         URL_LIK,
@@ -60,6 +63,7 @@ const PosteBas = ({ vuePostBas }) => {
           withCredentials: true,
           headers: {
             "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
           },
         }
       )

@@ -16,6 +16,7 @@ const Connexion = () => {
     e.preventDefault();
     const option = {theme: 'dark' ,draggable:false}
     const URL_JWT = `${process.env.REACT_APP_URL}/api/connexion`;
+    const token = document.cookie && document.cookie.split('=')[1];
     axios
       .post(
         URL_JWT,
@@ -24,6 +25,7 @@ const Connexion = () => {
           withCredentials: true,
           headers: {
             "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
           },
         }
       )

@@ -15,11 +15,13 @@ const Suggestion = ({suggestion}) => {
 
   useEffect(() => {
     const URL_JWT = `${process.env.REACT_APP_URL}/api/utilisateur/profil`;
+    const token = document.cookie && document.cookie.split('=')[1];
     axios
       .get(URL_JWT, {
         withCredentials: true,
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
         },
       })
       .then((response) => {
@@ -59,6 +61,7 @@ const Suggestion = ({suggestion}) => {
 
   const handleAccepter = (id) => {
     const URL_INV = `${process.env.REACT_APP_URL}/api/accepter/invitation/${id}`;
+    const token = document.cookie && document.cookie.split('=')[1];
     axios
       .patch(
         URL_INV,
@@ -67,6 +70,7 @@ const Suggestion = ({suggestion}) => {
           withCredentials: true,
           headers: {
             "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
           },
         }
       )
@@ -86,6 +90,7 @@ const Suggestion = ({suggestion}) => {
   };
   const handleRefuser = (id) => {
     const URL_INV = `${process.env.REACT_APP_URL}/api/refuse/invitation/${id}`;
+    const token = document.cookie && document.cookie.split('=')[1];
     axios
       .patch(
         URL_INV,
@@ -94,6 +99,7 @@ const Suggestion = ({suggestion}) => {
           withCredentials: true,
           headers: {
             "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
           },
         }
       )

@@ -14,11 +14,13 @@ const CadreAbonnes = ({abonnes}) => {
 
   useEffect(() => {
     const URL_JWT = `${process.env.REACT_APP_URL}/api/utilisateur/profil`;
+    const token = document.cookie && document.cookie.split('=')[1];
     axios
       .get(URL_JWT, {
         withCredentials: true,
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
         },
       })
       .then((response) => {
@@ -56,6 +58,7 @@ const CadreAbonnes = ({abonnes}) => {
 
   const handleRetirerAbonne= (id) => {
     const URL_AMIS = `${process.env.REACT_APP_URL}/api/retirer/abonner/${id}`;
+    const token = document.cookie && document.cookie.split('=')[1];
     axios
       .patch(
         URL_AMIS,
@@ -64,6 +67,7 @@ const CadreAbonnes = ({abonnes}) => {
           withCredentials: true,
           headers: {
             "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
           },
         }
       )
@@ -84,6 +88,7 @@ const CadreAbonnes = ({abonnes}) => {
 
   const handleSuivie = (id) => {
     const URL_INV = `${process.env.REACT_APP_URL}/api/suivre/${id}`;
+    const token = document.cookie && document.cookie.split('=')[1];
     axios
       .patch(
         URL_INV,
@@ -92,6 +97,7 @@ const CadreAbonnes = ({abonnes}) => {
           withCredentials: true,
           headers: {
             "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
           },
         }
       )

@@ -25,11 +25,13 @@ const ProfilModifier = () => {
 
   useEffect(() => {
     const URL_JWT = `${process.env.REACT_APP_URL}/api/utilisateur/profil`;
+    const token = document.cookie && document.cookie.split('=')[1];
     axios
       .get(URL_JWT, {
         withCredentials: true,
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
         },
       })
       .then((response) => {
@@ -67,6 +69,7 @@ const ProfilModifier = () => {
     setPhotoCouverture(PHOTO_COUVERTURE_URL_NAME);
 
     const URL_COUVERTURE = `${process.env.REACT_APP_URL}/api/modifier/photo/couverture`;
+    const token = document.cookie && document.cookie.split('=')[1];
     const fd = new FormData();
     fd.append("couverture", PHOTO_COUVERTURE);
     await axios
@@ -78,7 +81,8 @@ const ProfilModifier = () => {
         {
           withCredentials: true,
           headers: {
-            "Content-Type": "multipart/form-data",
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
           },
         }
       )
@@ -103,6 +107,7 @@ const ProfilModifier = () => {
     setPhotoProfil(PHOTO_PROFIL_URL_NAME);
 
     const URL_PROFIL = `${process.env.REACT_APP_URL}/api/modifier/photo/profil`;
+    const token = document.cookie && document.cookie.split('=')[1];
     const fd = new FormData();
     fd.append("profil", PHOTO_PROFIL);
     await axios
@@ -114,7 +119,8 @@ const ProfilModifier = () => {
         {
           withCredentials: true,
           headers: {
-            "Content-Type": "multipart/form-data",
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
           },
         }
       )
@@ -140,6 +146,7 @@ const ProfilModifier = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const URL_MOD = `${process.env.REACT_APP_URL}/api/modifier/profil/identifiant`;
+    const token = document.cookie && document.cookie.split('=')[1];
     axios
       .put(
         URL_MOD,
@@ -148,6 +155,7 @@ const ProfilModifier = () => {
           withCredentials: true,
           headers: {
             "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
           },
         }
       )

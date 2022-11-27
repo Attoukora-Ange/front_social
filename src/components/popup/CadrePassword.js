@@ -15,6 +15,7 @@ const CadrePassword = ({handleClose}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const URL_JWT = `${process.env.REACT_APP_URL}/api/modifier/profil/password`;
+    const token = document.cookie && document.cookie.split('=')[1];
     axios
       .put(
         URL_JWT,
@@ -23,6 +24,7 @@ const CadrePassword = ({handleClose}) => {
           withCredentials: true,
           headers: {
             "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
           },
         }
       )

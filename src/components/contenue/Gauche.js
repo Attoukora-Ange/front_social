@@ -142,17 +142,21 @@ const Gauche = () => {
   const handleDeconnexion = () => {
     dispacthVisible({ type: AFFICHER_RECHERCHE_PSEUDO, payload: "" });
     const URL_DECONNEXION = `${process.env.REACT_APP_URL}/api/deconnexion`;
+    const token = document.cookie && document.cookie.split('=')[1];
     axios
       .delete(URL_DECONNEXION, {
         withCredentials: true,
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
         },
       })
       .then((response) => {
         if (response.status === 200) {
           toast(response.data.deconnexion);
+          document.cookie = "access_token=''" 
           window.location = "/connexion";
+
           // return dispacth({type: AFFICHER_ID_UTILISATEUR, payload: response.data.data});
         }
       })

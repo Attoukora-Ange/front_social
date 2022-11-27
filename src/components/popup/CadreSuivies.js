@@ -13,11 +13,13 @@ const CadreSuivies = ({user}) => {
 
   useEffect(() => {
     const URL_JWT = `${process.env.REACT_APP_URL}/api/utilisateur/profil`;
+    const token = document.cookie && document.cookie.split('=')[1];
     axios
       .get(URL_JWT, {
         withCredentials: true,
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
         },
       })
       .then((response) => {
@@ -56,6 +58,7 @@ const CadreSuivies = ({user}) => {
 
   const handleNePlusSuivie= (id) => {
     const URL_AMIS = `${process.env.REACT_APP_URL}/api/annuler/suivre/${id}`;
+    const token = document.cookie && document.cookie.split('=')[1];
     axios
       .patch(
         URL_AMIS,
@@ -64,6 +67,7 @@ const CadreSuivies = ({user}) => {
           withCredentials: true,
           headers: {
             "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
           },
         }
       )

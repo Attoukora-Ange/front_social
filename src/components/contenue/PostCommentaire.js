@@ -12,6 +12,7 @@ const PostCommentaire = ({ post }) => {
 
   const handleCommentaire = (id) => {
     const URL_COM = `${process.env.REACT_APP_URL}/api/poster/commentaire/${id}`;
+    const token = document.cookie && document.cookie.split('=')[1];
     axios
       .put(
         URL_COM,
@@ -20,6 +21,7 @@ const PostCommentaire = ({ post }) => {
           withCredentials: true,
           headers: {
             "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
           },
         }
       )

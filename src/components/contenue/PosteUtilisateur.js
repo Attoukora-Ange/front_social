@@ -43,11 +43,13 @@ const PosteUtilisateur = ({ post }) => {
 
   const handleSuppPost = (id) => {
     const URL_SUP = `${process.env.REACT_APP_URL}/api/poster/delete/${id}`;
+    const token = document.cookie && document.cookie.split('=')[1];
     axios
       .delete(URL_SUP, {
         withCredentials: true,
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
         },
       })
       .then((response) => {
