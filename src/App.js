@@ -18,8 +18,9 @@ function App() {
   useEffect(() => {
     const URL_JWT = `${process.env.REACT_APP_URL}/jwt`;
    const token = localStorage.getItem('token')
+   console.log('jwt token ' + token)
     axios
-      .post(URL_JWT, {token}, {
+      .post(URL_JWT, {token : token}, {
         withCredentials: true,
         headers: {
           "Content-Type": "application/json",
