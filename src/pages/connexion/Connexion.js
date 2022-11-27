@@ -32,7 +32,7 @@ const Connexion = () => {
           setEmail("");
           setPassword("");
           toast('VOUS ETES BIEN CONNECTE...');
-          localStorage.setItem('token', response.data.token)
+          localStorage.setItem('token', JSON.stringify(response.data.token))
           console.log('token ' + response.data.token)
           dispacth({type: AFFICHER_UTILISATEUR, payload : response.data.NOUVEAU_CONNECTE})
           window.location = '/';
