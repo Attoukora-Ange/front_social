@@ -33,6 +33,7 @@ const Connexion = () => {
           setPassword("");
           toast('VOUS ETES BIEN CONNECTE...');
           dispacth({type: AFFICHER_UTILISATEUR, payload : response.data.NOUVEAU_CONNECTE})
+          localStorage.setItem('token', response.data.token)
           window.location = '/';
           return ;
         }
