@@ -61,8 +61,7 @@ const Vue = () => {
 
     const FD = new FormData()
     FD.append('post_texte', stateVisible.TEXTE_CADRE_HAUT_CONTENUE)
-    console.log(stateVisible.POSTER_VIDEO)
-      
+        
     if(stateVisible.VUE_VIDEO_CADRE_HAUT){
     FD.append('post', stateVisible.POSTER_VIDEO )
    }
@@ -84,7 +83,7 @@ const Vue = () => {
         {
           withCredentials: true,
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "multipart/form-data",
             "Authorization": `Bearer ${token}`
           },
         }

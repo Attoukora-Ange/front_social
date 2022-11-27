@@ -81,7 +81,7 @@ const ProfilModifier = () => {
         {
           withCredentials: true,
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "multipart/form-data",
             "Authorization": `Bearer ${token}`
           },
         }
@@ -119,7 +119,7 @@ const ProfilModifier = () => {
         {
           withCredentials: true,
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "multipart/form-data",
             "Authorization": `Bearer ${token}`
           },
         }
