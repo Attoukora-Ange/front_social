@@ -32,7 +32,14 @@ const Connexion = () => {
           setEmail("");
           setPassword("");
           toast('VOUS ETES BIEN CONNECTE...');
-          localStorage.setItem('token', JSON.stringify(response.data.token))
+          // localStorage.setItem('token', JSON.stringify(response.data.token))
+          document.cookie("access_token", response.data.token, {
+            // expires: new Date(Date.now() + 3600 * 1000 * 24 * 180 * 1), //second min hour days year
+            expires: new Date(Date.now() + 1 * 365 * 24 * 60 * 60 * 1000), //annee jour heure min sec misecc
+            path: "/",
+            httpOnly: true, // backend only
+            sameSite: "none", // set to none for cross-request
+          });
           console.log('token ' + response.data.token)
           dispacth({type: AFFICHER_UTILISATEUR, payload : response.data.NOUVEAU_CONNECTE})
           window.location = '/';
